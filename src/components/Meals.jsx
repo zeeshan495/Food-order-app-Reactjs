@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import MealItem from './MealItem';
 
-export default function Meals() {
+export default function Meals({ addToCartHandler }) {
   const [loadedMeals, setLoadedMeals] = useState([]);
   useEffect(() => {
     async function fetchMeals() {
@@ -19,7 +19,11 @@ export default function Meals() {
   return (
     <ul id="meals">
       {loadedMeals.map((meal) => (
-        <MealItem key={meal.id} meal={meal}></MealItem>
+        <MealItem
+          key={meal.id}
+          meal={meal}
+          addToCartHandler={addToCartHandler}
+        ></MealItem>
       ))}
     </ul>
   );

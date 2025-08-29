@@ -1,7 +1,7 @@
 import logoImg from '../assets/logo.jpg';
 import Button from './UI/Button';
 
-export default function Header() {
+export default function Header({ quantity }) {
   return (
     <header id="main-header">
       <div id="title">
@@ -9,7 +9,7 @@ export default function Header() {
         <h1>Food Order App in React</h1>
       </div>
       <nav>
-        <Button textOnly={true}>Cart (0)</Button>
+        <Button textOnly={true}>Cart ({quantity})</Button>
       </nav>
     </header>
   );
