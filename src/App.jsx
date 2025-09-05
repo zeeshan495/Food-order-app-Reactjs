@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import Meals from './components/Meals';
 import { useState } from 'react';
-import CartContext from './store/CartContext';
+import { CartContextProvider } from './store/CartContext';
 
 function App() {
   const [quantity, setQuantity] = useState(0);
@@ -9,14 +9,10 @@ function App() {
     setQuantity((prevQuantity) => prevQuantity + 1);
   }
   return (
-    <>
-      <CartContext.Provider value={quantity}>
-        {/* avoiding prop drilling and using context instead */}
-        {/* <Header quantity={quantity} /> */}
-        <Header />
-        <Meals addToCartHandler={addToCartHandler} />
-      </CartContext.Provider>
-    </>
+    <CartContextProvider>
+      <Header />
+      <Meals addToCartHandler={addToCartHandler} />
+    </CartContextProvider>
   );
 }
 
